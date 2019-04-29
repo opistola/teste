@@ -1,4 +1,7 @@
 import pytest
 
+def sum(a,b):
+    return a+b
 
-assert 1 == 1
+def test_sum():
+    assert sum(1,2) == 3
