@@ -5,7 +5,7 @@ pipeline {
       steps {
         sh """
               if [ -d venv ]; then
-                rm -rf venv
+                rm -rf venv;
               fi
               virtualenv venv
               pip3 install --user --no-warn-script-location -r requirements.txt
@@ -15,7 +15,6 @@ pipeline {
     stage("Tests") {
       steps {
         sh """
-          echo ${SHELL}
           . venv/bin/activate
           pytest tests/
         """
