@@ -16,7 +16,7 @@ pipeline {
         sh """
           echo ${SHELL}
           source venv/bin/activate
-          echo "which python3"
+          pytest tests/
         """
       }
     }
