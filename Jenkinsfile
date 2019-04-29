@@ -7,7 +7,7 @@ pipeline {
               echo ${SHELL}
               [ -d venv ] && rm -rf venv
               virtualenv venv
-              pip3 install -r requirements.txt
+              pip3 install --user -r requirements.txt
               make clean
           """
       }
