@@ -8,7 +8,7 @@ pipeline {
                 rm -rf venv;
               fi
               virtualenv venv
-              pip3 install --user --no-warn-script-location -r requirements.txt
+              pip3 install -r requirements.txt
           """
       }
     }
