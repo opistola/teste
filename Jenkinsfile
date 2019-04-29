@@ -16,7 +16,10 @@ pipeline {
     }
     stage("Tests") {
       steps {
-        sh 'pytest tests/'
+        sh """
+          source venv/bin/activate
+          echo "which python3"
+        """
       }
     }
     stage ('Cleanup') {
