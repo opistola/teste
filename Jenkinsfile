@@ -1,6 +1,7 @@
 pipeline {
-  agent { label 'jenkins-node1' }
+  agent none
   stages {
+    agent { label 'jenkins-node1' }
     stage('Prepare env') {
       steps {
         sh 'virtualenv venv'
@@ -9,6 +10,7 @@ pipeline {
       }
     }
     stage('Tests') {
+      agent { label 'jenkins-node1' }
       steps {
         sh 'pytest tests/'
       }
