@@ -1,10 +1,16 @@
 pipeline {
   agent any
   stages {
+    stage('Prepare env') {
+      steps {
+        sh 'virtualenv venv'
+        sh 'source venv/bin/activate'
+        sh 'pip3 install -r requirements.txt'
+      }
+    }
     stage('Tests') {
       steps {
-        sh 'PATH="/usr/local/bin:$PATH"'
-        sh 'python3 -m pytest tests/'
+        sh 'pytest tests/'
       }
     }
   }
