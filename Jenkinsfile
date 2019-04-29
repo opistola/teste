@@ -5,7 +5,7 @@ pipeline {
       steps {
         sh """
               echo ${SHELL}
-              if [ -d venv ]; then rm -rf venv
+              if [ -d venv ]; then rm -rf venv fi
               virtualenv venv
               pip3 install --user --no-warn-script-location -r requirements.txt
           """
