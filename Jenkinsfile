@@ -16,7 +16,7 @@ pipeline {
       steps {
         sh """
           echo ${SHELL}
-          source venv/bin/activate
+          . venv/bin/activate
           pytest tests/
         """
       }
