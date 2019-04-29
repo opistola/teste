@@ -7,9 +7,8 @@ pipeline {
               echo ${SHELL}
               [ -d venv ] && rm -rf venv
               virtualenv venv
-              export PATH=${VIRTUAL_ENV}/bin:${PATH}
-              pip install --upgrade pip
-              pip install -r requirements.txt
+              pip3 install --upgrade pip3
+              pip3 install -r requirements.txt
               make clean
           """
       }
