@@ -7,7 +7,6 @@ pipeline {
               echo ${SHELL}
               [ -d venv ] && rm -rf venv
               virtualenv venv
-              pip3 install --upgrade pip
               pip3 install -r requirements.txt
               make clean
           """
@@ -16,6 +15,7 @@ pipeline {
     stage("Tests") {
       steps {
         sh """
+          echo ${SHELL}
           source venv/bin/activate
           echo "which python3"
         """
