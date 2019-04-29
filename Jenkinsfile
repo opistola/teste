@@ -3,15 +3,26 @@ pipeline {
   stages {
     stage("PrepareEnv") {
       steps {
-        sh 'virtualenv venv'
-        sh 'source venv/bin/activate'
-        sh 'pip3 install -r requirements.txt'
+        sh """
+              echo ${SHELL}
+              [ -d venv ] && rm -rf venv
+              virtualenv venv
+              export PATH=${VIRTUAL_ENV}/bin:${PATH}
+              pip install --upgrade pip
+              pip install -r requirements.txt
+              make clean
+          """
       }
     }
     stage("Tests") {
       steps {
         sh 'pytest tests/'
       }
+    }
+    stage ('Cleanup') {
+            steps {
+                sh 'rm -rf venv'
+            }
     }
   }
 }
