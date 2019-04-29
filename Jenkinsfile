@@ -1,5 +1,5 @@
 pipeline {
-  agent any
+  agent node jenkins-node1
   stages {
     stage('Prepare env') {
       steps {
