@@ -1,16 +1,14 @@
 pipeline {
-  agent none
+  agent { label "jenkins-node1" }
   stages {
-    agent { label 'jenkins-node1' }
-    stage('Prepare env') {
+    stage("PrepareEnv") {
       steps {
         sh 'virtualenv venv'
         sh 'source venv/bin/activate'
         sh 'pip3 install -r requirements.txt'
       }
     }
-    stage('Tests') {
-      agent { label 'jenkins-node1' }
+    stage("Tests") {
       steps {
         sh 'pytest tests/'
       }
